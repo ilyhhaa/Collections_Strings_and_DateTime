@@ -1,0 +1,198 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Text;
+using System.Threading;
+using System.Text.RegularExpressions;
+namespace generics
+
+{ 
+    
+    class Program
+    {
+
+        static void Main(string[] args)
+        {   /////////////////////////////////
+            ///////////Collections///////////
+            /////////////////////////////////
+            List<string> NewList = new List<string>() { "Ilya" , "i" ,"Love","C#", "Developing"};
+
+            
+            foreach (var item in NewList)
+            {
+                Console.WriteLine(item);
+            }
+            
+
+            Console.WriteLine("LINKED STRING HERE!!!!!!!!!!!!!!!!!!");
+            ////LinkedString
+            LinkedList<string> NewLinkedList = new LinkedList<string>(NewList);
+            Console.WriteLine(NewLinkedList.Count);
+            Console.WriteLine(NewLinkedList.First?.Value);
+            Console.WriteLine(NewLinkedList.Last.Value);
+            foreach (var LinkedItem in NewLinkedList)
+            {
+                Console.WriteLine(LinkedItem);
+
+            }
+            Console.WriteLine("QUEUEEEEEEEEE");
+            /////////////////////////////////
+            //////Queue//////////////////////
+            ////////////////////////////////
+            List<int> IntList = new List<int>(5) { 2, 3, 5, 77, 88 };
+            Queue<int> INTQueue = new Queue<int>(IntList);
+
+            int E1 = INTQueue.Dequeue();
+            Console.WriteLine(E1);
+            int E2 = INTQueue.Dequeue();
+            Console.WriteLine(E2);
+            int EPeak = INTQueue.Peek();
+            Console.WriteLine(EPeak);
+            Console.WriteLine("STACK!!!!!!!!!!!!!!");
+            //////////////////////////////////////
+            /////////////Stack////////////////////
+            //////////////////////////////////////
+            Stack<string> MyStack = new Stack<string>(3);
+            MyStack.Push("1");
+            MyStack.Push("2");
+            MyStack.Push("3");
+            foreach (var item in MyStack)
+            {
+                Console.WriteLine(item);
+            }
+            MyStack.Clear();
+            if (MyStack.Count>5)
+            {
+                foreach (var item in MyStack)
+                {
+                    Console.WriteLine(item);
+                }
+            }
+            else
+            {
+                Console.WriteLine("MyStack is empty");
+            }
+            Console.WriteLine("Dictionary!!!!!!!!!!!!!!!!!!!!!!!!!!");
+
+            /////////////////////////////////
+            /////////Dictionary//////////////
+            /////////////////////////////////
+            
+            Dictionary<string, int> StrokaCifra = new Dictionary<string, int>();
+
+            var cifry = new Dictionary<string, int>()
+            {
+                {"FIRST" , 1 },
+                {"SECOND" , 2 },
+                {"Third" , 3}
+            };
+            int first = cifry["FIRST"];
+            Console.WriteLine(first);
+            cifry["Privet"] = 1998;
+            int check = cifry["Privet"];
+            Console.WriteLine(check);
+
+            Console.WriteLine("ObservableCollection!!!!!!!!!!!!!!!!!!!!!");
+
+            ////////////////////////////////////////////////
+            ///////////////ObservableCollection/////////////
+            ////////////////////////////////////////////////
+            
+            ObservableCollection<string> OBScollection = new ObservableCollection<string>(NewList);
+            OBScollection.Add("OBSCollectionItem");
+            foreach (var item in OBScollection)
+            {
+                Console.WriteLine(item);
+            }
+            OBScollection.Move(0, 3);
+            foreach (var item1 in OBScollection)
+            {
+                Console.WriteLine(item1);
+            }
+            Console.WriteLine("STRING WOOOOOORKS!!!!!!!!!!!!!!!!!!!!!!!!");
+
+            //////////////////////////////
+            ///////////STRINGS////////////
+            //////////////////////////////
+            
+            string Words1 = "Ilya.Developer";
+            string Words2 = " привет";
+            char PartOfWords = Words1[4];
+            Console.WriteLine(PartOfWords);
+            Console.WriteLine(Words1.Length);
+            string ConcatWords = string.Concat(Words1, Words2);
+            Console.WriteLine(ConcatWords);
+            int Compare = string.Compare(Words1, Words2);
+                if (Compare<0)
+            {
+                Console.WriteLine($"Число {Words1} стоит в строке выше нежели число {Words2}");
+            }
+            else if (Compare>0)
+            {
+                Console.WriteLine($"Число {Words1} стоит в строке ниже нежели число {Words2}");
+            }
+            else
+            {
+                Console.WriteLine("Числа одинаковые");
+            }
+            Console.WriteLine(Compare);
+            var files = new string[]
+            {
+                "Ilya.Developer",
+                "Vanya.Developer",
+                "Nikita.Developer",
+                "Ilya",
+                "Nikolay",
+                "We are.Friends"
+
+            };
+            foreach (var item in files)
+            {
+                if (item.EndsWith(".Developer"))
+                {
+                    Console.WriteLine(item);
+                }
+            }
+            Console.WriteLine(Words1.ToLower());
+            Console.WriteLine(Words1.ToUpper());
+            Console.WriteLine("StringFormating!!!!!!!!!!!!!!!!!!!!");
+
+            ////////////////////////////////
+            //////////StringFormating///////
+            ////////////////////////////////
+            
+            double Money = 22.53;
+            string result = string.Format("{0:C2}", Money);
+            Console.WriteLine(result);
+
+            ////////////////////////////////
+            ///////RegularExpressions///////
+            ////////////////////////////////
+
+            string StrForRE =("В течение многих столетий Сатана занимает видное положение духовного главы четырёх пятых людского рода и политического главы всего человечества. Tак что нельзя отказать ему в первоклассных организационных способностях.");
+           
+            Regex regex = new Regex(@"\w*с\w*");
+            MatchCollection match = regex.Matches(StrForRE);
+            if (match.Count>0)
+            {
+                foreach (Match match1 in match)
+                {
+                    Console.WriteLine(match1.Value);
+                }
+
+                
+            }
+            else
+            {
+                Console.WriteLine("Совпадений не найдено");
+            }
+
+
+           
+        }
+
+
+
+    }
+}
+

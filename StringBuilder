@@ -1,0 +1,30 @@
+﻿using System;
+using System.Text;
+
+namespace generics
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            //////////StringBuilder///////
+            ////////////////////////////////
+            StringBuilder str = new StringBuilder("Ilya really", 19);
+            Console.WriteLine(str.Append(" love C#"));
+            Console.WriteLine(str.Insert(19, " and mom."));
+            Console.WriteLine(str.Capacity);
+            Console.WriteLine(str.Append("  Strange guy, yeah?   "));
+            Console.WriteLine(str.Length);
+            Console.WriteLine(str.Capacity);
+
+
+            StringBuilder stringBuilder = new StringBuilder();
+            var sb = new StringBuilder("Privet Ilya, eto StringBuilder");
+            Console.WriteLine(sb.ToString());
+            Console.WriteLine(sb.Length);
+
+           
+        }
+    }
+}
